@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #222;
+}
+
+.card {
+  width: 90%;
+  /*90% sirine od roditeljskog elementa, omogucuje responzivnost, px - fiksno, % - relativno*/
+  max-width: 470px;
+  background: linear-gradient(135deg, #00feba, #5b548a);
+  /*gradijent - 135 je kut gradijenta, iz tirkizne u tamno plavu*/
+  /*kut se racuna u smjeru kazaljke, 0deg - odozgo prema dolje, 90deg - s lijeva na desno, 180 - odozdo na gore, 270 - s desna na lijevo*/
+  color: #fff;
+  margin: 100px auto 0;
+  /*top 100px, left+right auto, bottom 0*/
+  border-radius: 20px;
+  padding: 40px 35px;
+  text-align: center;
+
+}

@@ -106,3 +106,55 @@ body {
   margin-top: 10px;
   display: none;
 }
+
+/* default */
+.card {
+  width: 90%;
+  max-width: 470px;
+  background: linear-gradient(135deg, #00feba, #5b548a);
+  color: #fff;
+  margin: 100px auto 0;
+  border-radius: 20px;
+  padding: 40px 35px;
+  text-align: center;
+  transition: background 1s ease;
+  /* glatka promjena */
+}
+
+/* ☀️ Sunčano */
+.card.sunny-day {
+  background: linear-gradient(135deg, #f6d365, #fda085);
+}
+
+.card.sunny-night {
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+}
+
+/* ☁️ Oblačno */
+.card.cloudy-day {
+  background: linear-gradient(135deg, #bdc3c7, #2c3e50);
+}
+
+.card.cloudy-night {
+  background: linear-gradient(135deg, #434343, #000000);
+}
+
+/* 🌧️ Kiša */
+.card.rainy {
+  background: linear-gradient(135deg, #667db6, #0082c8, #0082c8, #667db6);
+}
+
+/* ❄️ Snijeg */
+.card.snowy {
+  background: linear-gradient(135deg, #83a4d4, #b6fbff);
+}
+
+/* 🌫️ Magla */
+.card.foggy {
+  background: linear-gradient(135deg, #757f9a, #d7dde8);
+}
+
+/* fallback */
+.card.default-bg {
+  background: linear-gradient(135deg, #00feba, #5b548a);
+}

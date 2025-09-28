@@ -98,3 +98,11 @@ body {
   font-size: 28px;
   margin-top: -6px;
 }
+
+.error {
+  text-align: left;
+  margin-left: 10px;
+  font-size: 20px;
+  margin-top: 10px;
+  display: none;
+}

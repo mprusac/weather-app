@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,37 +8,59 @@
 </head>
 <body>
 
-    <div class="card">
+  <div class="card">
+
+    <!-- Search container -->
+    <div class="search-container">
       <div class="search">
-        <input type="text" placeholder="Enter city name" spellcheck = "false">
+        <input id="search" type="text" placeholder="Enter city name" spellcheck="false">
         <button><img src="images/search.png" alt="Search button icon"></button>
       </div>
-      <div class="error">
-        <p>Invalid city name</p>
-      </div>
-      <div class="weather">
-        <img src="images/rain.png" alt="Rain icon" class = "weather-icon">
-        <h1 class="temp">22°C</h1>
-        <h2 class="city">New York</h2>
-        <div class="details">
-          <div class="col">
-            <img src="images/humidity.png" alt="Humidity icon">
-            <div class="div">
-              <p class="humidity">50%</p>
-              <p>Humidity</p>
-            </div>
-          </div>
+      <!-- Dropdown s prijedlozima -->
+      <ul id="suggestions" class="suggestions"></ul>
+    </div>
 
-          <div class="col">
-            <img src="images/wind.png" alt="Wind icon">
-            <div class="div">
-              <p class="wind">15 km/h</p>
-              <p>Wind speed</p>
-            </div>
-          </div>
-        </div>
+    <!-- Error poruka -->
+    <div class="error">
+      <p>Invalid city name</p>
+    </div>
+
+    <!-- Podaci o vremenu -->
+<div class="weather">
+  <!-- ikona vremena odmah ispod searcha -->
+  <img src="images/clear.png" alt="Clear sky" class="weather-icon">
+
+  <!-- temperatura -->
+  <h1 class="temp">25°C</h1>
+
+  <!-- grad + država -->
+  <h2 class="city">Miami, FL</h2>
+
+  <!-- lokalno vrijeme -->
+  <p class="local-time">Local time: 15:45</p>
+
+  <!-- detalji -->
+  <div class="details">
+    <div class="col">
+      <img src="images/humidity.png" alt="Humidity icon">
+      <div class="div">
+        <p class="humidity">69%</p>
+        <p>Humidity</p>
       </div>
     </div>
-    <script src = "script.js"></script>
+
+    <div class="col">
+      <img src="images/wind.png" alt="Wind icon">
+      <div class="div">
+        <p class="wind">9 km/h</p>
+        <p>Wind speed</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <script src="script.js"></script>
 </body>
 </html>

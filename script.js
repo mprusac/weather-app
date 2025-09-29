@@ -15,6 +15,21 @@ function animateText(el, newValue) {
   }, 150);
 }
 
+function getLocalTime(dt, timezone) {
+  // dt je UTC timestamp
+  const utcDate = new Date(dt * 1000);
+
+  // dodaj offset samo jednom
+  const localDate = new Date(utcDate.getTime() + timezone * 1000);
+
+  const hours = localDate.getUTCHours().toString().padStart(2, "0");
+  const minutes = localDate.getUTCMinutes().toString().padStart(2, "0");
+
+  return { hours, minutes };
+}
+
+
+
 let vantaEffect = null;
 
 
@@ -265,6 +280,9 @@ function setStarsEffect() {
 
 function setWeatherEffectCanvas(condition, period) {
   particles = []; // reset
+  rainDrops = [];
+  snowFlakes = [];
+  stars = [];
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   if (condition.toLowerCase() === "rain") {
@@ -372,9 +390,9 @@ async function checkWeather(city) {
     }
 
     // lokalno vrijeme
-    const localDate = new Date((data.dt + data.timezone) * 1000);
-    const hours = localDate.getUTCHours().toString().padStart(2, "0");
-    const minutes = localDate.getUTCMinutes().toString().padStart(2, "0");
+    const { hours, minutes } = getLocalTime(data.dt, data.timezone);
+    animateText(document.querySelector(".local-time"), `${hours}:${minutes}`);
+
 
     // animirani upisi
     animateText(document.querySelector(".city"), `${data.name}, ${data.sys.country}`);
@@ -421,9 +439,10 @@ async function checkWeatherByCoords(lat, lon) {
     }
 
     // lokalno vrijeme
-    const localDate = new Date((data.dt + data.timezone) * 1000);
-    const hours = localDate.getUTCHours().toString().padStart(2, "0");
-    const minutes = localDate.getUTCMinutes().toString().padStart(2, "0");
+
+    const { hours, minutes } = getLocalTime(data.dt, data.timezone);
+    animateText(document.querySelector(".local-time"), `${hours}:${minutes}`);
+
 
     // animirani upisi
     animateText(document.querySelector(".city"), `${data.name}, ${data.sys.country}`);
@@ -461,8 +480,10 @@ async function checkWeatherByCoords(lat, lon) {
 
 // helper za gradijent
 function getGradient(weather, dt, timezone) {
-  const localDate = new Date((dt + timezone) * 1000);
-  const hours = localDate.getHours();
+
+  const { hours } = getLocalTime(dt, timezone);
+
+
 
   let period;
   if (hours >= 4 && hours < 6) period = "dawn";
@@ -486,8 +507,8 @@ function getGradient(weather, dt, timezone) {
 
     case "clouds":
       if (period === "morning") gradient = "linear-gradient(to top, #d7d2cc, #304352)";
-      if (period === "day") gradient = "linear-gradient(to top, #757f9a, #d7dde8)";
-      if (period === "evening") gradient = "linear-gradient(to top, #485563, #29323c)";
+      if (period === "noon") gradient = "linear-gradient(to top, #757f9a, #d7dde8)";
+      if (period === "afternoon") gradient = "linear-gradient(to top, #485563, #29323c)";
       if (period === "night") gradient = "linear-gradient(to top, #232526, #414345)";
       break;
     case "rain":

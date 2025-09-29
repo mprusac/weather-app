@@ -9,7 +9,10 @@
 <body>
 
   <div class="card">
-
+   
+     <canvas id="weather-canvas"></canvas>
+     <div id = "fog"></div>
+<div id="clouds"></div>
     <!-- Search container -->
     <div class="search-container">
       <div class="search">
@@ -27,6 +30,8 @@
 
     <!-- Podaci o vremenu -->
 <div class="weather">
+  <div id="lightning"></div>
+
   <!-- ikona vremena odmah ispod searcha -->
   <img src="images/clear.png" alt="Clear sky" class="weather-icon">
 
@@ -62,5 +67,11 @@
 
 
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+
+<!-- Vanta.js (za oblake i fog) -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.clouds.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.fog.min.js"></script>
 </body>
 </html>

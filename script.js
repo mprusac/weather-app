@@ -28,6 +28,30 @@ function getLocalTime(dt, timezone) {
   return { hours, minutes };
 }
 
+async function getForecast(lat, lon) {
+  const res = await fetch(`/forecast?lat=${lat}&lon=${lon}`);
+  const data = await res.json();
+
+  const hourlyContainer = document.querySelector(".hourly-forecast");
+  hourlyContainer.innerHTML = "";
+
+  // uzmi prvih 6 unosa (svaki je 3h interval)
+  data.list.slice(0, 6).forEach(item => {
+    const hour = new Date(item.dt * 1000).getHours();
+    const temp = Math.round(item.main.temp);
+    const icon = item.weather[0].icon;
+
+    const div = document.createElement("div");
+    div.classList.add("hourly-item");
+    div.innerHTML = `
+      <span>${hour}:00</span>
+      <img src="http://openweathermap.org/img/wn/${icon}.png" alt="">
+      <span>${temp}°C</span>
+    `;
+    hourlyContainer.appendChild(div);
+  });
+}
+
 
 
 let vantaEffect = null;

@@ -67,6 +67,20 @@ app.get("/weatherByCoords", async (req, res) => {
   }
 });
 
+app.get("/forecast", async (req, res) => {
+  const { lat, lon } = req.query;
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.API_KEY}&lang=hr`
+    );
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: "Greška kod dohvaćanja prognoze" });
+  }
+});
+
+
 
 
 

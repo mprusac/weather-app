@@ -395,3 +395,28 @@ button:focus {
   background: white;
   opacity: 0;
 }
+
+.hourly-forecast {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  overflow-x: auto;
+  /* ako je puno sati, može se scrollati horizontalno */
+  gap: 1rem;
+}
+
+.hourly-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 50px;
+  font-size: 0.85rem;
+}
+
+.hourly-item img {
+  width: 32px;
+  height: 32px;
+}
